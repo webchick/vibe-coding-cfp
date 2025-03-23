@@ -1,14 +1,14 @@
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
-from .database import SessionLocal
-from . import models, crud
-from .auth import get_password_hash
+from database import SessionLocal
+from models import User, CFP
+from security import get_password_hash
 
 def init_db():
     db = SessionLocal()
     try:
         # Create admin user
-        admin_user = models.User(
+        admin_user = User(
             email="admin@example.com",
             hashed_password=get_password_hash("admin123"),
             is_active=True,
@@ -65,7 +65,7 @@ def init_db():
         ]
 
         for cfp_data in sample_cfps:
-            cfp = models.CFP(
+            cfp = CFP(
                 **cfp_data,
                 created_at=datetime.utcnow(),
                 updated_at=datetime.utcnow()
