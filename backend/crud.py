@@ -4,8 +4,10 @@ from typing import List, Optional
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
-from . import models, schemas
-from .config import settings
+import models
+import schemas
+from config import settings
+from security import get_password_hash
 
 # User operations
 def get_user(db: Session, user_id: int):
