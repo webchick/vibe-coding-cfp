@@ -24,7 +24,12 @@ A web application for tracking and managing Call for Proposals (CFPs) from vario
 
 ## Setup
 
-1. Clone the repository
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/webchick/vibe-coding-cfp.git
+   cd vibe-coding-cfp
+   ```
+
 2. Install dependencies:
    ```bash
    # Backend
@@ -34,36 +39,32 @@ A web application for tracking and managing Call for Proposals (CFPs) from vario
    pip install -r requirements.txt
 
    # Frontend
-   cd frontend
+   cd ../frontend
    npm install
    ```
 
 3. Set up environment variables:
    ```bash
+   # From the backend directory
    cp .env.example .env
    # Edit .env with your configuration
    ```
 
 4. Initialize the database:
    ```bash
-   cd backend
-   alembic upgrade head
+   # From the backend directory
+   python -m init_db
    ```
 
 5. Run the application:
    ```bash
-   # Backend
-   cd backend
-   uvicorn main:app --reload
-
-   # Frontend
-   cd frontend
-   npm run dev
+   # From the project root directory
+   ./run.sh
    ```
 
 ## Configuration
 
-The following environment variables are required:
+The following environment variables are required in `backend/.env`:
 
 - `DATABASE_URL`: PostgreSQL connection string
 - `SLACK_BOT_TOKEN`: Slack bot user OAuth token
